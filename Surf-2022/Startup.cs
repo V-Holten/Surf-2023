@@ -15,7 +15,7 @@ namespace Surf_2022
 		public Startup(IConfiguration configuration)
 		{
 			Configuration = configuration;
-			//test
+			//test.
 		}
 
 		public IConfiguration Configuration { get; }
