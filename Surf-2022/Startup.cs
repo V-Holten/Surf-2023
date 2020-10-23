@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Surf_2022.Data;
 
 namespace Surf_2022
 {
@@ -24,6 +26,9 @@ namespace Surf_2022
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllersWithViews();
+
+		    services.AddDbContext<Surf_2022Context>(options =>
+		            options.UseSqlServer(Configuration.GetConnectionString("Surf_2022Context")));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
