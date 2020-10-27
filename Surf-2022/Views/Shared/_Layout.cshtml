@@ -36,6 +36,22 @@
                     <li>
                         <a class="nav-link text-dark" asp-area="" asp-controller="Surfspots" asp-action="">Surfspots</a>
                     </li>
+                    <li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <form id="logout" action="@Url.Action("Logout", "Account")" method="POST">
+                                <a href="javascript: $('#logout').submit()" class="last">
+                                    Logout
+                                    <br /><span class="tagline">@User.Identity.Name</span>
+                                </a>
+                            </form>
+                        }else
+                        {
+                            <a href="@Url.Action("Login", "Account")" title="log in" class="last">
+                                Login
+                            </a>
+                        }
+                    </li>
 
                 </ul>
             </div>

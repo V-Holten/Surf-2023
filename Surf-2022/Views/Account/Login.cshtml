@@ -1,21 +1,14 @@
 ﻿@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
-@model Surf_2022.Models.RegisterViewModel
+@model Surf_2022.Models.LoginViewModel
 
 
 <fieldset class="account">
 
-    <h1>Opret ny bruger</h1>
-
+    <h1>Login</h1>
     <br />
+    <form role="form" asp-action="Login">
 
-    <form role="form" asp-action="Register">
         <div asp-validation-summary="All" class="input-validation-error"></div>
-
-        <div class="form-group">
-            <label asp-for="EmailAddress"></label>
-            <input type="email" asp-for="EmailAddress" class="form-control" />
-            <span asp-validation-for="EmailAddress" class="field-validation-error"></span>
-        </div>
 
         <div class="form-group">
             <label asp-for="UserName"></label>
@@ -29,16 +22,19 @@
             <span asp-validation-for="Password" class="field-validation-error"></span>
         </div>
 
-        <div class="form-group">
-            <label asp-for="ConfirmPassword"></label>
-            <input type="password" asp-for="ConfirmPassword" class="form-control" />
-            <span asp-validation-for="ConfirmPassword" class="field-validation-error"></span>
-        </div>
-        <br />
+
         <div>
             <label>&nbsp;</label>
-            <button type="submit" class="btn btn-primary">Opret bruger</button>
+            <button type="submit" class="btn btn-primary">Login</button>
         </div>
 
     </form>
+
+    <br />
+
+    <div class="form-group">
+        <label>Not Registered?</label>
+        <a asp-action="Register">Create a new account</a>
+    </div>
+
 </fieldset>

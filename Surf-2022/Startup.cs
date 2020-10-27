@@ -32,14 +32,8 @@ namespace Surf_2022
 		    services.AddDbContext<Surf_2022Context>(options =>
 		            options.UseSqlServer(Configuration.GetConnectionString("Surf_2022Context")));
 
-			services.AddDbContext<IdentityContext>(options =>
-			{
-				var connectionString = Configuration.GetConnectionString("IdentityContext");
-				options.UseSqlServer(connectionString);
-			});
-
 			services.AddIdentity<IdentityUser, IdentityRole>()
-                   .AddEntityFrameworkStores<IdentityContext>();
+                   .AddEntityFrameworkStores<Surf_2022Context>();
 
 			services.AddMvc();
 		}
@@ -56,7 +50,7 @@ namespace Surf_2022
 				app.UseExceptionHandler("/Home/Error");
 			}
 
-			app.UseAuthentication();
+		
 
 			app.UseStaticFiles();
 

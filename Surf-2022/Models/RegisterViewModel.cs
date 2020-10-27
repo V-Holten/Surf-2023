@@ -8,17 +8,27 @@ namespace Surf_2022.Models
 {
     public class RegisterViewModel
     {
+        public int Id { get; set; }
+
+        [Required]
+        [MaxLength(100)]
+        [DataType(DataType.Text)]
+        [Display(Name = "Brugernavn")]
+        public string UserName { get; set; }
+
         [Required]
         [EmailAddress, MaxLength(500)]
-        [Display(Name = "Email Address")]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email")]
         public string EmailAddress { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
+        [Display(Name = "Kodeord")]
         public string Password { get; set; }
 
-        [Compare("Password", ErrorMessage = "Passwords must match")]
-        [Display(Name = "Confirm Password")]
+        [Compare("Password", ErrorMessage = "Kodeord skal matche")]
+        [Display(Name = "Bekræft kodeord")]
         public string ConfirmPassword { get; set; }
     }
 }

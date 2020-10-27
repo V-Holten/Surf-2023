@@ -13,11 +13,52 @@ namespace Surf_2022.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly SignInManager<IdentityUser> _signinManager;
         private readonly UserManager<IdentityUser> _userManager;
 
-        public AccountController(UserManager<IdentityUser> userManager)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
+            _signinManager = signInManager;
             _userManager = userManager;
+        }
+
+        public IActionResult Login()
+        {
+            return View(new LoginViewModel());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel login, string returnUrl = null)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var result = await _signinManager.PasswordSignInAsync(
+                login.EmailAddress, login.Password, false, false);
+
+            if (!result.Succeeded)
+            {
+                ModelState.AddModelError("", "Login error!");
+                return View();
+            }
+
+            if (string.IsNullOrWhiteSpace(returnUrl))
+                return RedirectToAction("Index", "Home");
+
+            return Redirect(returnUrl);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout(string returnUrl = null)
+        {
+            await _signinManager.SignOutAsync();
+
+            if (string.IsNullOrWhiteSpace(returnUrl))
+                return RedirectToAction("Index", "Home");
+
+            return Redirect(returnUrl);
         }
 
         public IActionResult Register()
@@ -42,7 +83,7 @@ namespace Surf_2022.Controllers
             if (!result.Succeeded)
             {
                 foreach(var error in result.Errors.Select(x => x.Description))
-                {
+                {  
                     ModelState.AddModelError("", error);
                 }
 

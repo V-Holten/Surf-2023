@@ -9,17 +9,17 @@ namespace Surf_2022.Models
     public class LoginViewModel
     {
         [Required]
-        [EmailAddress, MaxLength(500)]
-        [Display(Name = "Email Address")]
-        public string EmailAddress { get; set; }
+        [MaxLength(100)]
+        [DataType(DataType.Text)]
+        [Display(Name = "Brugernavn")]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
+        [Display(Name ="Kodeord")]
         public string Password { get; set; }
 
-        [Compare("Password", ErrorMessage = "Passwords must match")]
-        [Display(Name = "Confirm Password")]
-        public string ConfirmPassword { get; set; }
+       
     }
 }
 
