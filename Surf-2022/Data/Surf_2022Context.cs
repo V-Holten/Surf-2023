@@ -12,6 +12,7 @@ namespace Surf_2022.Data
         public Surf_2022Context (DbContextOptions<Surf_2022Context> options)
             : base(options)
         {
+            Database.EnsureCreated();
         }
 
         public DbSet<Surf_2022.Models.Surfspots> Surfspots { get; set; }
