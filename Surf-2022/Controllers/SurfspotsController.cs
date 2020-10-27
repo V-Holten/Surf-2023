@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Surf_2022.Data;
 using Surf_2022.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Surf_2022.Controllers
 {
@@ -21,6 +22,7 @@ namespace Surf_2022.Controllers
         }
 
         // GET: Surfspots1
+        
         public async Task<IActionResult> Index()
         {
             return View(await _context.Surfspots.ToListAsync());
@@ -31,6 +33,7 @@ namespace Surf_2022.Controllers
         }
 
         // GET: Surfspots1/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -49,6 +52,7 @@ namespace Surf_2022.Controllers
         }
 
         // GET: Surfspots1/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -59,6 +63,7 @@ namespace Surf_2022.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,Name,Lattitude,Longtitude")] Surfspots surfspots)
         {
             if (ModelState.IsValid)
@@ -71,6 +76,7 @@ namespace Surf_2022.Controllers
         }
 
         // GET: Surfspots1/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -91,6 +97,7 @@ namespace Surf_2022.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Lattitude,Longtitude")] Surfspots surfspots)
         {
             if (id != surfspots.Id)
@@ -122,6 +129,7 @@ namespace Surf_2022.Controllers
         }
 
         // GET: Surfspots1/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -142,6 +150,7 @@ namespace Surf_2022.Controllers
         // POST: Surfspots1/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var surfspots = await _context.Surfspots.FindAsync(id);

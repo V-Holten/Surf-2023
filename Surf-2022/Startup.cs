@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Surf_2022.Data;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace Surf_2022
 {
@@ -29,6 +31,17 @@ namespace Surf_2022
 
 		    services.AddDbContext<Surf_2022Context>(options =>
 		            options.UseSqlServer(Configuration.GetConnectionString("Surf_2022Context")));
+
+			services.AddDbContext<IdentityContext>(options =>
+			{
+				var connectionString = Configuration.GetConnectionString("IdentityContext");
+				options.UseSqlServer(connectionString);
+			});
+
+			services.AddIdentity<IdentityUser, IdentityRole>()
+                   .AddEntityFrameworkStores<IdentityContext>();
+
+			services.AddMvc();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +55,9 @@ namespace Surf_2022
 			{
 				app.UseExceptionHandler("/Home/Error");
 			}
+
+			app.UseAuthentication();
+
 			app.UseStaticFiles();
 
 			app.UseRouting();
