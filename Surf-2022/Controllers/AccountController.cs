@@ -36,7 +36,7 @@ namespace Surf_2022.Controllers
             }
 
             var result = await _signinManager.PasswordSignInAsync(
-                login.EmailAddress, login.Password, false, false);
+                login.UserName, login.Password, false, false);
 
             if (!result.Succeeded)
             {
