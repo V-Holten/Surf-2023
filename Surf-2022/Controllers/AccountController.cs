@@ -75,7 +75,7 @@ namespace Surf_2022.Controllers
             var newUser = new IdentityUser
             {
                 Email = registration.EmailAddress,
-                UserName = registration.EmailAddress,
+                UserName = registration.UserName,
             };
 
             var result = await _userManager.CreateAsync(newUser, registration.Password);

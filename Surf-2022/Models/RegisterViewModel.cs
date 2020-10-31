@@ -29,7 +29,6 @@ namespace Surf_2022.Models
 
         [Required]
         [Compare("Password", ErrorMessage = "Kodeord skal matche")]
-        [DataType(DataType.Password)]
         [Display(Name = "Bekræft kodeord")]
         public string ConfirmPassword { get; set; }
     }

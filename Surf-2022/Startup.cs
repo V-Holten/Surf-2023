@@ -32,8 +32,13 @@ namespace Surf_2022
 		    services.AddDbContext<Surf_2022Context>(options =>
 		            options.UseSqlServer(Configuration.GetConnectionString("Surf_2022Context")));
 
+			services.AddDbContext<IdentityUserContext>(options =>
+			options.UseSqlServer(Configuration.GetConnectionString("IdentityUserContext")));
+
 			services.AddIdentity<IdentityUser, IdentityRole>()
-                   .AddEntityFrameworkStores<Surf_2022Context>();
+				   .AddEntityFrameworkStores<IdentityUserContext>()
+				   .AddDefaultTokenProviders();
+			
 
 			services.AddMvc();
 		}
@@ -50,7 +55,7 @@ namespace Surf_2022
 				app.UseExceptionHandler("/Home/Error");
 			}
 
-		
+			app.UseAuthentication();
 
 			app.UseStaticFiles();
 
