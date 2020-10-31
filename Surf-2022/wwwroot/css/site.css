@@ -50,3 +50,7 @@ p {
 .navbar-nav li a:hover {
     color: #1abc9c !important;
 }
+
+.form-group {
+    border-style: dotted;
+}
