@@ -52,5 +52,6 @@ p {
 }
 
 .form-group {
-    border-style: dotted;
+   
+    width: 80px;
 }
