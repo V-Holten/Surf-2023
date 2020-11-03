@@ -1,8 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Surf_2022</RootNamespace>
+    <UserSecretsId>500e6e61-0f6e-47ac-b7ca-8b4f6b40b0b0</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
