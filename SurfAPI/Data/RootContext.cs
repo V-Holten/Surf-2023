@@ -13,7 +13,7 @@ namespace SurfAPI.Data
             Database.EnsureCreated();
         }
 
-        public DbSet<Models.Root> Cities { get; set; }
+        public DbSet<Models.Root> Roots { get; set; }
     }
 
 }
