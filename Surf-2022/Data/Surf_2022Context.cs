@@ -4,12 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Surf_2022.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
+
 
 namespace Surf_2022.Data
 {
-    public class Surf_2022Context : IdentityDbContext<IdentityUser>
+    public class Surf_2022Context : DbContext
     {
         public Surf_2022Context (DbContextOptions<Surf_2022Context> options)
             : base(options)
@@ -17,7 +16,7 @@ namespace Surf_2022.Data
             Database.EnsureCreated();
         }
 
-        public DbSet<Surf_2022.Models.Surfspots> Surfspots { get; set; }
+        public DbSet<Surfspots> Surfspots { get; set; }
         
     }
 }
