@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Surf-2022", "Surf-2022\Surf-2022.csproj", "{DFE649BC-71F7-4385-8B6E-FC21CA5DBEFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Surf-2022", "Surf-2022\Surf-2022.csproj", "{DFE649BC-71F7-4385-8B6E-FC21CA5DBEFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurfAPI", "SurfAPI\SurfAPI.csproj", "{A8BE3436-020F-4C58-A14B-ADDB3D53EFEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{DFE649BC-71F7-4385-8B6E-FC21CA5DBEFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFE649BC-71F7-4385-8B6E-FC21CA5DBEFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFE649BC-71F7-4385-8B6E-FC21CA5DBEFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8BE3436-020F-4C58-A14B-ADDB3D53EFEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8BE3436-020F-4C58-A14B-ADDB3D53EFEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8BE3436-020F-4C58-A14B-ADDB3D53EFEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8BE3436-020F-4C58-A14B-ADDB3D53EFEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
