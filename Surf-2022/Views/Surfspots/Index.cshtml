@@ -2,7 +2,7 @@
 @model IEnumerable<Surf_2022.Models.Surfspots>
 
 @{
-    ViewData["Title"] = "Surfspots";
+   // ViewData["Title"] = "Surfspots";
     ViewBag.Title = "Weather";
 }
 
@@ -68,7 +68,7 @@
             var cityname = $("#txtCity").val();
             if (cityname.length > 0) {
                 $.ajax({
-                    url: "WeatherDetail?City=" + cityname,
+                    url: "WeatherDetail?City=" + cityname, // kan være et problem!
                     type: "POST",
                     success: function (rsltval) {
                         var data = JSON.parse(rsltval);

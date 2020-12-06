@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json;
 using System.Web;
 using System.Net;
-using Surf_2022.Models.WeatherData;
+
 
 namespace Surf_2022.Controllers
 {
@@ -27,9 +27,9 @@ namespace Surf_2022.Controllers
 
         // GET: Surfspots1
 
-        public async Task<IActionResult> Index()
+        public ActionResult Index()
         {
-            return View(await _context.Surfspots.ToListAsync());
+            return View(); // await _context.Surfspots.ToListAsync()
         }
         public IActionResult Error()
         {
