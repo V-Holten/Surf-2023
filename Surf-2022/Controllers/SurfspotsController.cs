@@ -9,6 +9,10 @@ using Microsoft.EntityFrameworkCore;
 using Surf_2022.Data;
 using Surf_2022.Models;
 using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json;
+using System.Web;
+using System.Net;
+using Surf_2022.Models.WeatherData;
 
 namespace Surf_2022.Controllers
 {
@@ -22,7 +26,7 @@ namespace Surf_2022.Controllers
         }
 
         // GET: Surfspots1
-        
+
         public async Task<IActionResult> Index()
         {
             return View(await _context.Surfspots.ToListAsync());
@@ -163,5 +167,48 @@ namespace Surf_2022.Controllers
         {
             return _context.Surfspots.Any(e => e.Id == id);
         }
+
+        [HttpPost]
+        public string WeatherDetail(string City)
+        {
+
+            //Assign API KEY which received from OPENWEATHERMAP.ORG  
+            string appId = "a2258f4e6c3e49afba25622cf1081b1b";
+
+            //API path with CITY parameter and other parameters.  
+            string url = string.Format("http://api.openweathermap.org/data/2.5/weather?q={0}&units=metric&cnt=1&APPID={1}", City, appId);
+
+            using (WebClient client = new WebClient())
+            {
+                string json = client.DownloadString(url);
+         
+        //Converting to OBJECT from JSON string.  
+        Root weatherInfo = JsonConvert.DeserializeObject<Root>(url);
+
+        //Special VIEWMODEL design to send only required fields not all fields which received from   
+        //www.openweathermap.org api  
+        ResultViewModel rslt = new ResultViewModel();
+
+                rslt.ResultCountry = weatherInfo.Sys.Country;  
+                rslt.ResultCity = weatherInfo.Name;  
+                rslt.ResultLat = Convert.ToString(weatherInfo.Coord.Lat);  
+                rslt.ResultLon = Convert.ToString(weatherInfo.Coord.Lon);  
+                rslt.ResultDescription = weatherInfo.Weather[0].Description;  
+                rslt.ResultHumidity = Convert.ToString(weatherInfo.Main.Humidity);  
+                rslt.ResultTemp = Convert.ToString(weatherInfo.Main.Temp);  
+                rslt.ResultTempFeelsLike = Convert.ToString(weatherInfo.Main.Feels_like);  
+                rslt.ResultTempMax = Convert.ToString(weatherInfo.Main.Temp_max);  
+                rslt.ResultTempMin = Convert.ToString(weatherInfo.Main.Temp_min);  
+                rslt.ResultWeatherIcon = weatherInfo.Weather[0].Icon;  
+  
+                //Converting OBJECT to JSON String   
+                var jsonstring = JsonConvert.SerializeObject(rslt);  
+  
+                //Return JSON string.  
+                return jsonstring;
+            }
+        }
     }
 }
+
+

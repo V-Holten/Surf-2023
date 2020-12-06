@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SurfAPI.Models
+namespace Surf_2022.Models.WeatherData
 {
-    public class Clouds
+    public class Rain
     {
-        public int All { get; set; }
+        public double _1h { get; set; }
     }
 }

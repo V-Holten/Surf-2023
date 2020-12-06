@@ -55,8 +55,9 @@ namespace Surf_2022
 			else
 			{
 				app.UseExceptionHandler("/Home/Error");
-			} 
-			
+			}
+
+			app.UseHttpsRedirection();
 
 			app.UseAuthentication();
 
